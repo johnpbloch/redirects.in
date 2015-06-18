@@ -12,6 +12,11 @@
             @include('partials.form')
         @show
     </div>
+    <footer>
+        <span id="copyright">Copyright &copy; {{ date('Y') }}</span>
+        &bull;
+        <span id="created_by">Created by <a href="https://johnpbloch.com">John P Bloch</a></span>
+    </footer>
 </div>
 </body>
 </html>

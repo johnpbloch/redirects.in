@@ -9,3 +9,12 @@ h1 {
   text-align: center;
   font-weight: bold;
 }
+
+footer {
+  &, a {
+    color: $footer-font;
+    font-size: .8rem;
+  }
+  text-align: right;
+  margin: 2em 0 1em;
+}
