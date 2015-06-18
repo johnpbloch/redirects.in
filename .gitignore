@@ -4,3 +4,4 @@
 _ide_helper.php
 .phpstorm.meta.php
 public/css
+public/build/
