@@ -1,9 +1,15 @@
 @import "vendor/reset";
-
 @import "modules/typography";
 
 #container {
   max-width: 720px;
   width: 90%;
   margin: 1em auto;
+}
+
+#content {
+  border: 1px solid #666;
+  border-radius: .5em;
+  background-color: #aaa;
+  padding: .75em;
 }
