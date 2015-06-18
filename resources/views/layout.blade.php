@@ -9,7 +9,7 @@
     <h1>Redirects In&hellip;</h1>
     <div id="content">
         @section('content')
-            @include('partials.form');
+            @include('partials.form')
         @show
     </div>
 </div>
