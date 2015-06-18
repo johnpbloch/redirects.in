@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>@yield('title')</title>
+        <title>@yield('title')Redirects.in</title>
     </head>
     <body>
         <div class="container">
