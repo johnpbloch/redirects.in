@@ -23,6 +23,7 @@ class MainController extends Controller
 
     public function follow( $url )
     {
+        return view('follow');
     }
 
 }
