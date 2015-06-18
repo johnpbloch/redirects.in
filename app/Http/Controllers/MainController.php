@@ -14,10 +14,15 @@ class MainController extends Controller
     {
         if ($request->input( 'url', false )) {
             $url = rtrim( url(), '/' ) . '/' . $request->input( 'url' );
+
             return redirect( $url );
         }
 
         return view( 'index' );
+    }
+
+    public function follow( $url )
+    {
     }
 
 }

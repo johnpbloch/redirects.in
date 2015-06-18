@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/', 'MainController@index');
+Route::get( '/', 'MainController@index' );
+
+Route::get( '{url}', 'MainController@follow' )
+     ->where( 'url', '.+' );
