@@ -12,6 +12,11 @@ class MainController extends Controller
 
     public function index( Request $request )
     {
+        if ($request->input( 'url', false )) {
+            $url = rtrim( url(), '/' ) . '/' . $request->input( 'url' );
+            return redirect( $url );
+        }
+
         return view( 'index' );
     }
 
