@@ -8,8 +8,9 @@
 <div id="container">
     <h1>Redirects In&hellip;</h1>
     <div id="content">
-        <div class="title">Laravel 5</div>
-        <div class="quote">{{ Inspiring::quote() }}</div>
+        @section('content')
+            @include('partials.form');
+        @show
     </div>
 </div>
 </body>
