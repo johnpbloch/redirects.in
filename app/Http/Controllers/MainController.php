@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use League\Url\Url;
 
 class MainController extends Controller
 {
@@ -23,7 +24,29 @@ class MainController extends Controller
 
     public function follow( $url )
     {
-        return view('follow');
+        $urlObject = $this->getUrlObject( $url );
+        $stop      = false;
+        do {
+        } while ( ! $stop);
+
+        return view( 'follow' );
+    }
+
+    /**
+     * @param $url
+     *
+     * @return static
+     */
+    protected function getUrlObject( $url )
+    {
+        $urlObject = Url::createFromUrl( $url );
+        if ( ! $urlObject->getScheme()->get()) {
+            $urlObject->setScheme( 'http' );
+
+            return $urlObject;
+        }
+
+        return $urlObject;
     }
 
 }
