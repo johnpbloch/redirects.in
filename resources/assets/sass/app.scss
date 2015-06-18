@@ -1,4 +1,5 @@
 @import "vendor/reset";
+@import "modules/colors";
 @import "modules/typography";
 
 #container {
@@ -8,8 +9,8 @@
 }
 
 #content {
-  border: 1px solid #666;
+  border: 1px solid $content-border;
   border-radius: .5em;
-  background-color: #aaa;
-  padding: .75em;
+  background-color: $content-bg;
+  padding: 1.5em .75em;
 }
