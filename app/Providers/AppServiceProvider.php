@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Resolver;
 use Illuminate\Support\ServiceProvider;
+use League\Url\Url;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind( 'League\Url\Url', function ( $app, $parameters ) {
+            return Url::createFromUrl( array_values( $parameters )[0] );
+        } );
         $this->app->singleton( 'resolver', function ( $app ) {
             return new Resolver();
         } );
