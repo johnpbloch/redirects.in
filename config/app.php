@@ -196,6 +196,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Resolver' => \App\Facades\Resolver::class,
+
         'Guzzle'    => \Kozz\Laravel\Facades\Guzzle::class,
 
     ],
