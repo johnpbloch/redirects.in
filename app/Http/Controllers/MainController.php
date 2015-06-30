@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use League\Url\Url;
+use Resolver;
 
 class MainController extends Controller
 {
@@ -24,10 +25,7 @@ class MainController extends Controller
 
     public function follow( $url )
     {
-        $urlObject = $this->getUrlObject( $url );
-        $stop      = false;
-        do {
-        } while ( ! $stop);
+        $steps = Resolver::resolve( $url );
 
         return view( 'follow' );
     }
