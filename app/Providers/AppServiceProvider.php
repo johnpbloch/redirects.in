@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Resolver;
+use App\Steps;
 use Illuminate\Support\ServiceProvider;
 use League\Url\Url;
 
@@ -29,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             return Url::createFromUrl( array_values( $parameters )[0] );
         } );
         $this->app->singleton( 'resolver', function ( $app ) {
-            return new Resolver();
+            return new Resolver( new Steps() );
         } );
     }
 }

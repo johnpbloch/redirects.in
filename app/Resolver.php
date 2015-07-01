@@ -5,6 +5,14 @@ namespace App;
 class Resolver
 {
 
+    /** @var Steps */
+    protected $steps;
+
+    function __construct( Steps $steps )
+    {
+        $this->steps = $steps;
+    }
+
     /**
      * Resolve the redirections in a given URL
      *
@@ -14,9 +22,7 @@ class Resolver
      */
     public function resolve( $url )
     {
-        $steps = [];
-
-        return $steps;
+        return $this->steps->getAllSteps();
     }
 
 }
