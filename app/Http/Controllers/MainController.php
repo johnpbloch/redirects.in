@@ -25,26 +25,7 @@ class MainController extends Controller
 
     public function follow( $url )
     {
-        $steps = Resolver::resolve( $url );
-
-        return view( 'follow' );
-    }
-
-    /**
-     * @param $url
-     *
-     * @return static
-     */
-    protected function getUrlObject( $url )
-    {
-        $urlObject = Url::createFromUrl( $url );
-        if ( ! $urlObject->getScheme()->get()) {
-            $urlObject->setScheme( 'http' );
-
-            return $urlObject;
-        }
-
-        return $urlObject;
+        return Resolver::resolve( $url );
     }
 
 }
