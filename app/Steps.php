@@ -19,6 +19,9 @@ class Steps extends ArrayObject
             $allSteps['start'] = $steps[0];
             $allSteps['end']   = $steps[$count - 1];
         }
+        if ($count === 1) {
+            $allSteps['steps'] = [ ];
+        }
 
         return $allSteps;
     }
