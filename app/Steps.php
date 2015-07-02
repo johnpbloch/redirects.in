@@ -23,4 +23,16 @@ class Steps extends ArrayObject
         return $allSteps;
     }
 
+    /**
+     * Find an item in the Steps collection
+     *
+     * @param mixed $needle
+     *
+     * @return bool|int|string
+     */
+    public function find( $needle )
+    {
+        return array_search( $needle, $this->getArrayCopy() );
+    }
+
 }
