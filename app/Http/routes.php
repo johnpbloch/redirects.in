@@ -13,5 +13,7 @@
 
 Route::get( '/', 'MainController@index' );
 
-Route::get( '{url}', 'MainController@follow' )
-     ->where( 'url', '.+' );
+Route::get( '{url}', [
+    'middleware' => 'inject',
+    'uses'       => 'MainController@follow'
+] )->where( 'url', '.+' );
