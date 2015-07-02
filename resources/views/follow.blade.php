@@ -12,7 +12,9 @@
         <?php $previous = $start; ?>
         <ol>
             @forelse($steps as $step)
-                <li><span>{{ $previous }}</span><span>{{ $step }}</span></li>
+                @unless($previous === $step)
+                    <li><span>{{ $previous }}</span><span>{{ $step }}</span></li>
+                @endunless
                 <?php $previous = $step; ?>
             @empty
                 <li>No redirects</li>
