@@ -26,13 +26,16 @@ class InjectViews
      */
     public function handle( $request, Closure $next )
     {
-        $data = $next( $request );
+        $data = $rawData = $next( $request );
+        if (isset( $data->original )) {
+            $rawData = $data->original;
+        }
 
         $acceptHeader = $request->header( 'Accept' );
         $priorities   = [ 'html', 'json', '*/*' ];
         $format       = $this->negotiator->getBestFormat( $acceptHeader, $priorities );
         if ('json' !== $format) {
-            return view( 'follow', [ 'redirects' => $data ] );
+            return view( 'follow', [ 'redirects' => $rawData, 'final' => $rawData['end'] ] );
         }
 
         return $data;
