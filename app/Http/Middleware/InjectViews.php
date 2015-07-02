@@ -17,7 +17,9 @@ class InjectViews
      */
     public function handle( $request, Closure $next )
     {
-        return $next( $request );
+        $data = $next( $request );
+
+        return $data;
     }
 
 }
