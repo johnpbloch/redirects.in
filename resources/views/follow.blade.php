@@ -1,13 +1,13 @@
 @extends('layout')
 
-@section('title', isset($final) ? "$final | " : '')
+@section('title', isset($end) ? "$end | " : '')
 
 @section('content')
     <div id="steps_container">
         @unless($start === $end)
-        <div id="first_step">
-            {{ $start }}
-        </div>
+            <div id="first_step">
+                {{ $start }}
+            </div>
         @endunless
         <?php $previous = $start; ?>
         <ol>

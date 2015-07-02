@@ -35,7 +35,7 @@ class InjectViews
         $priorities   = [ 'html', 'json', '*/*' ];
         $format       = $this->negotiator->getBestFormat( $acceptHeader, $priorities );
         if ('json' !== $format) {
-            return view( 'follow', [ 'final' => $rawData['end'] ] + $rawData );
+            return view( 'follow', $rawData );
         }
 
         return $data;
