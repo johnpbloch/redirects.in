@@ -30,5 +30,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => Middleware\RedirectIfAuthenticated::class,
         'inject' => Middleware\InjectViews::class,
+        'blacklist' => Middleware\CheckUrlBlacklist::class
     ];
 }
