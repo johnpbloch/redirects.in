@@ -7,7 +7,7 @@ use Closure;
 class CheckUrlBlacklist
 {
 
-    private $domain_blacklist = [ ];
+    private $domain_blacklist;
 
     /**
      * Handle an incoming request.
@@ -31,6 +31,13 @@ class CheckUrlBlacklist
 
     private function getBlacklist()
     {
+        if ( ! is_array( $this->domain_blacklist )) {
+            $this->domain_blacklist = array_merge( [
+                'localhost',
+                '127.0.0.1',
+            ], config( 'app.host_blacklist', [ ] ) );
+        }
+
         return $this->domain_blacklist;
     }
 
