@@ -7,7 +7,13 @@
 <body>
 <div id="container">
     <h1>Redirects In&hellip;</h1>
+
     <div id="content">
+        @if(session('blacklist'))
+            <div id="errors">
+                {{ session('blacklist') }}
+            </div>
+        @endif
         @section('content')
             @include('partials.form')
         @show

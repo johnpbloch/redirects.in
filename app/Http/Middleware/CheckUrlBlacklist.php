@@ -21,9 +21,10 @@ class CheckUrlBlacklist
     {
         $urlString = ltrim( $request->getRequestUri(), '/' );
         /** @var \League\Url\Url $urlObject */
-        $urlObject = app( 'League\Url\Url', [ $urlString ] );
-        if (in_array( $urlObject->getHost()->get(), $this->getBlacklist() )) {
-            return redirect( url() )->withErrors( 'That host is blacklisted!' );
+        $urlObject  = app( 'League\Url\Url', [ $urlString ] );
+        $hostString = $urlObject->getHost()->get();
+        if (in_array( $hostString, $this->getBlacklist() )) {
+            return redirect( url() )->with( 'blacklist', sprintf( '%s is a blacklisted host!', $hostString ) );
         }
 
         return $next( $request );
