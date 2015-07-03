@@ -80,3 +80,12 @@ form {
     }
   }
 }
+
+#errors {
+  background-color: $error-bg;
+  margin: 0 0 1em;
+  padding: .5em;
+  border: 1px solid darken($error-bg, 60);
+  border-radius: .5em;
+  text-align: center;
+}
