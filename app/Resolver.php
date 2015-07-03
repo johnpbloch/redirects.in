@@ -32,6 +32,7 @@ class Resolver
         while ($urlObject = $this->getRedirectLocation( $urlObject )) {
             $urlString = (string) $urlObject;
             if (false !== $this->steps->find( $urlString )) {
+                $this->steps[] = $urlString;
                 $this->steps[] = 'Infinite redirect';
                 break;
             }
