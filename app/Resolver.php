@@ -67,7 +67,10 @@ class Resolver
     protected function getRedirectLocation( Url $url )
     {
         /** @var ResponseInterface $response */
-        $response = Guzzle::get( (string) $url, [ 'allow_redirects' => false ] );
+        $response = Guzzle::get( (string) $url, [
+            'allow_redirects' => false,
+            'verify'          => env( 'REDIRECTS_VERIFY_SSL', true ),
+        ] );
         if (
             ! env( 'ALLOW_INSANE_STATUS_CODES', false ) &&
             ( $response->getStatusCode() > 399 || $response->getStatusCode() < 300 )
