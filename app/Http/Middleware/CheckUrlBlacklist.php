@@ -23,7 +23,10 @@ class CheckUrlBlacklist
         /** @var \League\Url\Url $urlObject */
         $urlObject  = app( 'League\Url\Url', [ $urlString ] );
         $hostString = $urlObject->getHost()->get();
-        if (in_array( $hostString, $this->getBlacklist() )) {
+        if (
+            in_array( $hostString, $this->getBlacklist() ) ||
+            $this->isLocalIpAddress( $hostString )
+        ) {
             return redirect( url() )->with( 'blacklist', sprintf( '%s is a blacklisted host!', $hostString ) );
         }
 
@@ -40,6 +43,20 @@ class CheckUrlBlacklist
         }
 
         return $this->domain_blacklist;
+    }
+
+    private function isLocalIpAddress( $hostString )
+    {
+        if ( ! filter_var( $hostString, FILTER_VALIDATE_IP ) || '127.0.0.1' === $hostString) {
+            return false;
+        }
+        $addressParts = array_map( 'intval', explode( '.', $hostString ) );
+
+        return (
+            10 === $addressParts[0] ||
+            ( 172 === $addressParts[0] && ( 15 < $addressParts[1] || 32 > $addressParts[1] ) ) ||
+            ( 192 === $addressParts[0] && 168 === $addressParts[1] )
+        );
     }
 
 }
