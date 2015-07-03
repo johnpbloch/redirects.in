@@ -14,6 +14,6 @@
 Route::get( '/', 'MainController@index' );
 
 Route::get( '{url}', [
-    'middleware' => 'inject',
+    'middleware' => [ 'blacklist', 'inject' ],
     'uses'       => 'MainController@follow'
 ] )->where( 'url', '.+' );
