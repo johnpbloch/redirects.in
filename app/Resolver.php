@@ -27,16 +27,20 @@ class Resolver
      */
     public function resolve( $url )
     {
-        $urlObject     = $this->getUrlObject( $url );
-        $this->steps[] = (string) $urlObject;
-        while ($urlObject = $this->getRedirectLocation( $urlObject )) {
-            $urlString = (string) $urlObject;
-            if (false !== $this->steps->find( $urlString )) {
+        try {
+            $urlObject     = $this->getUrlObject( $url );
+            $this->steps[] = (string) $urlObject;
+            while ($urlObject = $this->getRedirectLocation( $urlObject )) {
+                $urlString = (string) $urlObject;
+                if (false !== $this->steps->find( $urlString )) {
+                    $this->steps[] = $urlString;
+                    $this->steps[] = 'Infinite redirect';
+                    break;
+                }
                 $this->steps[] = $urlString;
-                $this->steps[] = 'Infinite redirect';
-                break;
             }
-            $this->steps[] = $urlString;
+        } catch ( \Exception $e ) {
+            // Move along
         }
 
         return $this->steps->getAllSteps();
