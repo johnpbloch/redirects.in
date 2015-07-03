@@ -67,6 +67,7 @@ form {
     padding: .25em 1%;
     background: lighten($content-bg, 5);
     border-radius: 5px;
+    vertical-align: middle;
     &:first-child {
       margin-right: 5%;
       &:after {
